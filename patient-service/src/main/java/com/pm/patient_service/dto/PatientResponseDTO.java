@@ -5,6 +5,7 @@ public class PatientResponseDTO {
     private String id;
     private String name;
     private String email;
+    private String address;
     private String dateOfBirth;
 
     public String getId() {
@@ -39,4 +40,11 @@ public class PatientResponseDTO {
         this.dateOfBirth = dateOfBirth;
     }
 
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
 }
