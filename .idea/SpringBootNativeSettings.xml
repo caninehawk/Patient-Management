@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="SpringBootNativeSettings">
+    <option name="linkedExternalProjectsSettings">
+      <NativeProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/patient-service/src/main/java/com/pm/patient_service/PatientServiceApplication.java" />
+        <option name="qualifiedMainClassName" value="com.pm.patient_service.PatientServiceApplication" />
+        <option name="runConfigurationName" value="PatientServiceApplication" />
+        <option name="runConfigurationType" value="APPLICATION" />
+      </NativeProjectSettings>
+    </option>
+  </component>
+</project>
