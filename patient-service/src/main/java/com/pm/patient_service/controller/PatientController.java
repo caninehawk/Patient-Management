@@ -26,14 +26,14 @@ public class PatientController {
         this.patientService = patientService;
     }
 
-    @GetMapping
+    @GetMapping({ "", "/" })
     @Operation(summary = "Get all the Patients")
     public ResponseEntity<List<PatientResponseDTO>> getPatients(){
         List<PatientResponseDTO> patients = patientService.getPatients();
         return ResponseEntity.ok().body(patients);
     }
 
-    @PostMapping
+    @PostMapping({ "", "/" })
     @Operation(summary = "Create new Patient")
     public ResponseEntity<PatientResponseDTO> createPatient(@Validated({Default.class, CreatePatientValidationGroup.class}) @RequestBody PatientRequestDTO patientRequestDTO){
         PatientResponseDTO patientResponseDTO = patientService.createPatient(patientRequestDTO);
