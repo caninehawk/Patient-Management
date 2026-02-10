@@ -35,6 +35,10 @@ public class ApiGatewayApplication {
 				.path("/api-docs/patients")
 				.filters(f -> f.rewritePath("/api-docs/patients", "/v3/api-docs"))
 				.uri("http://patient-service:4000"))
+			.route("api-docs-auth-route", r -> r
+				.path("/api-docs/auth")
+				.filters(f -> f.rewritePath("/api-docs/auth", "/v3/api-docs"))
+				.uri("http://auth-service:4005"))
 			.build();
 	}
 
