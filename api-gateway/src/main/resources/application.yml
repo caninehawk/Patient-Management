@@ -1,6 +1,10 @@
 server:
   port: 4004 # Gateway listens on port 4004
 
+auth:
+  service:
+    url: http://auth-service:4005
+
 logging:
   level:
     org.springframework.cloud.gateway: DEBUG
@@ -10,14 +14,28 @@ spring:
   cloud:
     gateway:
       routes:
-        # Route for /api/patients/** to patient-service
+        # Route for auth-service /login and /validate (root paths) - no auth needed
+        - id: auth-service-root-route
+          uri: http://auth-service:4005
+          predicates:
+            - Path=/login,/validate
+
+        # Route for auth-service /auth/** (strips /auth) - no auth needed
+        - id: auth-service-route
+          uri: http://auth-service:4005
+          predicates:
+            - Path=/auth/**
+          filters:
+            - StripPrefix=1
+
+        # Route for /api/patients/** to patient-service - requires JWT
         - id: patient-service-route
           uri: http://patient-service:4000
           predicates:
             - Path=/api/patients,/api/patients/,/api/patients/**
           filters:
             - StripPrefix=1
-
+            - JwtValidation
 
         # Route for /api/docs/patients to patient-service /v3/api-docs
         - id: api-docs-patient-route

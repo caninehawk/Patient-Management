@@ -128,6 +128,12 @@
 			<version>2.2.41</version>
 			<scope>compile</scope>
 		</dependency>
+        <!-- Add H2 for local/in-memory DB when running without Postgres -->
+        <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <scope>runtime</scope>
+        </dependency>
 	</dependencies>
 
 	<build>
